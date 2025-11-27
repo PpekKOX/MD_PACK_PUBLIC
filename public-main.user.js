@@ -12,6 +12,8 @@
 // @exclude      http*://forum.margonem.*/*
 // @exclude      http*://commons.margonem.*/*
 // @exclude      http*://dev-commons.margonem.*/*
+// @grant        unsafeWindow
+// @run-at       document-start
 // ==/UserScript==
 
 (async function() {
@@ -22,4 +24,5 @@
         console.error("Błąd ładowania zestawu:", err);
     }
 })();
+
 
