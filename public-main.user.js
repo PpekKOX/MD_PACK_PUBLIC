@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         MD_PACK
 // @namespace    http://tampermonkey.net/
-// @version      v1.0
-// @description  Oszukujmy razem widzowie
+// @version      1.0
+// @description  Oszukujmy razem widzowie!
 // @author       PpekKOX
-// @match        http*://*.margonem.pl/
-// @match        http*://*.margonem.com/
+// @match        http*://*.margonem.pl/*
+// @match        http*://*.margonem.com/*
 // @exclude      http*://margonem.*/*
 // @exclude      http*://www.margonem.*/*
 // @exclude      http*://new.margonem.*/*
@@ -16,13 +16,17 @@
 // @run-at       document-start
 // ==/UserScript==
 
-(async function() {
+(async () => {
     try {
-        const module = await import('https://ppekkox.github.io/MD_PACK_PUBLIC/main.js');
-        module.main?.();
+        const url = "https://ppekkox.github.io/MD_PACK_PUBLIC/main.js?v=" + Date.now();
+        console.log("[MD_PACK] Loading bundle:", url);
+
+        const code = await fetch(url).then(r => r.text());
+        eval(code);
+
+        console.log("[MD_PACK] Bundle executed");
     } catch (err) {
-        console.error("Błąd ładowania zestawu:", err);
+        console.error("[MD_PACK] ERROR loading bundle", err);
     }
 })();
-
 
